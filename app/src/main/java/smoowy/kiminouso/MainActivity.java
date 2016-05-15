@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -113,11 +114,11 @@ public class MainActivity extends AppCompatActivity {
             aparecerTexto.setDuration(5000);
 
             ObjectAnimator Convertirseblanco = ObjectAnimator.ofFloat(contenedor,View.ALPHA,0f,1f);
-            aparecerTexto.setDuration(5000);
+            aparecerTexto.setDuration(2000);
 
             AnimatorSet animatorSet2 = new AnimatorSet();
             animatorSet2.play(Convertirseblanco).before(aparecerTexto);
-            animatorSet2.setDuration(10000);
+            animatorSet2.setDuration(7000);
 
 
 
@@ -129,7 +130,16 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                    texto.animate().alpha(0.7f).setDuration(5000).start();
+                    //texto.animate().alpha(0.7f).setDuration(5000).start();
+
+                    //Cuando se quiere animar varios elementos de golpe se puede utilizar esta
+                    //forma 
+                    ObjectAnimator scaleDown = ObjectAnimator.ofPropertyValuesHolder(texto,
+                            PropertyValuesHolder.ofFloat("scaleX", 0.0f, 1.0f),
+                            PropertyValuesHolder.ofFloat("scaleY", 0.0f, 1.0f),
+                            PropertyValuesHolder.ofFloat("alpha", 0.0f, 1.0f));
+                    scaleDown.setDuration(2000);
+                    scaleDown.start();
                 }
             });
 
