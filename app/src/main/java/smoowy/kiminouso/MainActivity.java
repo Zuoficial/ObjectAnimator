@@ -130,13 +130,12 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-                    //texto.animate().alpha(0.7f).setDuration(5000).start();
 
                     //Cuando se quiere animar varios elementos de golpe se puede utilizar esta
-                    //forma 
+                    //forma
                     ObjectAnimator scaleDown = ObjectAnimator.ofPropertyValuesHolder(texto,
-                            PropertyValuesHolder.ofFloat("scaleX", 0.0f, 1.0f),
-                            PropertyValuesHolder.ofFloat("scaleY", 0.0f, 1.0f),
+                            PropertyValuesHolder.ofFloat("scaleX", .8f, 1.0f),
+                            PropertyValuesHolder.ofFloat("scaleY", .8f, 1.0f),
                             PropertyValuesHolder.ofFloat("alpha", 0.0f, 1.0f));
                     scaleDown.setDuration(2000);
                     scaleDown.start();
